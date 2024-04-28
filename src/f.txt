@@ -1,0 +1,106 @@
+mport { useEffect ,useState,useCallback} from "react"
+export default function Currency(){
+    let [response,setresponse]=useState(0)
+    let[obj,setobj]=useState(null)
+     let[arr,setarr]=useState([])
+     let[from,setfrom]=useState("INR")
+     let[to,setto]=useState("USD")
+
+     
+    
+     let base="INR"
+     let url=`https://v6.exchangerate-api.com/v6/8fdb32c8ce60ce85f96dbf60/latest/${base}`
+     let get= useCallback(()=>{
+        
+        fetch(url).then((response)=>{
+            if(response.ok===true){
+           
+               return response.json()
+           }
+           else{
+               throw " response can't fetched"
+           }
+       })
+       .then((d)=>{
+           setobj(d.conversion_rates)
+     
+        let r=Object.keys(d.conversion_rates)
+       
+        setarr(r)
+   
+                  
+        })
+       .catch((e)=>{
+           console.log(e)
+        })
+     },[url])
+     
+    useEffect(()=>{
+           get()
+        },[])
+     
+    useEffect(()=>{
+         if(obj!==null){
+            console.log("not null")
+             amount()
+            }
+            else{
+                console.log("obj is empty")
+            }
+        },[obj,from,to])
+     function amount(){
+        
+            console.log(obj)
+        
+            console.log(to.toUpperCase())
+            
+            // console.log("the value is",v)
+            // setresponse(v)  
+        }
+    
+  
+       
+
+
+    return(<>
+         <h1>CURRENCY EXCHANGER</h1>
+        <div className="main">
+            <div className="amt">
+                <input type="number" min={0}  max={100000000}    placeholder="ENTER THE AMOUNT"/>
+            </div>
+            <div className="exc">
+                <input list="fr" id="frs"  placeholder="ENTER THE CURRENCY" style={{textTransform:"uppercase"}} value={from}onChange={(d)=>setfrom(d.target.value)}/>
+                 <datalist id="fr">
+                  { arr.map((elem,index)=> 
+                             <option value={elem}
+                             key={index}/>
+                             
+                    )}
+                 </datalist>
+                 <button className="swap" onClick={()=>{
+                    console.log(from,to)
+                    let temp=from
+                    setfrom(to)
+                    setto(temp)    
+                    console.log(from,to)
+                 }}>SWAP</button>
+                 <input list="to" id="tos"  placeholder="ENTER THE CURRENCY" style={{textTransform:"uppercase"}} value={to} onChange={(d)=>setto(d.target.value)}/>
+                 <datalist id="to">
+                  { arr.map((elem,index)=> 
+                             <option value={elem}
+                             key={index}/>
+                    )}
+                 </datalist>
+                <div className="gen">
+                    <b>AMOUNT IS:{response}</b>
+                    <button onClick={amount}>calaculate</button>
+                </div>
+                    
+                    
+                
+            </div>
+            
+
+        </div>
+    </>)
+}

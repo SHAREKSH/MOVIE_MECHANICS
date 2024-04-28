@@ -1,0 +1,125 @@
+#root{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.614);
+
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.con{ width: 70%;
+    height: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: black;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+
+}
+.con2{
+    background-color: rgba(80, 237, 7, 0.361);
+    width: 80%;
+    height: 60%;
+    border-radius: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    color: rgb(201, 235, 11);
+    font-weight: bolder;
+    position: relative;
+    gap: 5%;
+}
+.text{
+     border-top-left-radius: 10%;
+     border-bottom-left-radius: 10%;
+     padding-top: 1%;
+     padding-bottom: 1%;
+     padding-left: 6%;
+     padding-right: 6%;
+     /* border: none; */
+     color: black;
+    font-weight: bolder;
+
+
+}
+h1{
+    color: goldenrod;
+    text-align: center;
+}
+.cbtn{
+    padding:1%;
+   
+ 
+    border-top-right-radius: 15%;
+    border-bottom-right-radius: 15%;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    background-color: goldenrod;
+
+}
+.d1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 60%;
+
+
+}
+.d2{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2%;
+}
+
+.d3{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2%;
+}
+
+.d4{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2%;
+}
+#num{
+    background-color: black;
+}
+#symb{
+    color: rgb(218, 15, 15);
+}
+.rbtn{
+    background-color: goldenrod;
+    font-weight: bolder;
+    padding: 7%;
+    border-radius: 15%;
+}
+#symb:checked{
+    background-color: bisque;
+}
+.cbtn:hover{
+    background-color: rgb(205, 244, 12);
+}
